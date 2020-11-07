@@ -35,9 +35,6 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
         // Must be the same value you used while training
         static let predictionWindowSize = 20
         // Must be the same value you used while training
-        static let sensorsUpdateFrequency = 1.0 / 10.0
-        static let hiddenInLength = 200
-        static let hiddenCellInLength = 200
         static let stateInLength = 400
     }
     
@@ -45,9 +42,6 @@ class HeadphonePoseViewController: UIViewController, CMHeadphoneMotionManagerDel
     private let classifier = HeadClassifier()
     private let modelName:String = "HeadClassifier"
     var currentIndexInPredictionWindow = 0
-    //    let predictionWindowDataArray = try? MLMultiArray(shape: [1, ModelConstants.predictionWindowSize, ModelConstants.numOfFeatures] as [NSNumber], dataType: MLMultiArrayDataType.double)
-    //    var lastHiddenOutput = try? MLMultiArray(shape: [ModelConstants.hiddenInLength as NSNumber], dataType: MLMultiArrayDataType.double)
-    //    var lastHiddenCellOutput = try? MLMultiArray(shape: [ModelConstants.hiddenCellInLength as NSNumber], dataType: MLMultiArrayDataType.double)
     
     let accX = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
     let accY = try! MLMultiArray(shape: [ModelConstants.predictionWindowSize] as [NSNumber], dataType: MLMultiArrayDataType.double)
